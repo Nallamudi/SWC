@@ -1,0 +1,47 @@
+baseURL: https://www.streetwisecapital.net/
+title: StreetWise | Investment Management
+theme: airspace-hugo
+timeZone: UTC
+paginate: '6'
+summaryLength: '10'
+googleAnalytics: ''
+disqusShortname: themefisher-template
+disableLanguages: []
+hasCJKLanguage: no
+module:
+  hugoVersion:
+    extended: yes
+    min: 0.87.0
+outputs:
+  home:
+    - HTML
+    - WebAppManifest
+imaging:
+  quality: 90
+caches:
+  assets:
+    dir: :resourceDir/_gen
+    maxAge: 720h
+  images:
+    dir: :resourceDir/_gen
+    maxAge: 720h
+markup:
+  goldmark:
+    renderer:
+      unsafe: yes
+  highlight:
+    style: monokai
+  tableOfContents:
+    endLevel: 6
+    ordered: no
+    startLevel: 2
+mediaTypes:
+  application/manifest+json:
+    suffixes: webmanifest
+  text/netlify:
+    delimiter: ''
+    suffixes: ''
+outputFormats:
+  WebAppManifest:
+    mediaType: application/manifest+json
+    rel: manifest
