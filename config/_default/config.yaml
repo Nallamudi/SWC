@@ -6,7 +6,7 @@ paginate: '6'
 summaryLength: '10'
 googleAnalytics: ''
 disqusShortname: themefisher-template
-disableLanguages: []
+disableLanguages: ['fr','it', 'de']
 hasCJKLanguage: no
 module:
   hugoVersion:

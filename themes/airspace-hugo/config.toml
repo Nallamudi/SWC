@@ -69,3 +69,10 @@ link = "plugins/shuffle/shuffle.min.js"
 link = "plugins/google-map/gmap.js"
 [[params.plugins.js]]
 link = "plugins/webfont-loader/webfont-loader-2.min.js"
+
+#####################################################################
+### Disable languages #########
+
+disableLanguages = ["fr","en"]
+
+######################################################################
