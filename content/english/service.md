@@ -1,18 +1,9 @@
 ---
 about:
-  content: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate soluta
-    corporis odit, optio cum! Accusantium numquam ab, natus excepturi architecto earum
-    ipsa aliquam, illum, omnis rerum, eveniet officia nihil. Eum quod iure nulla,
-    soluta architecto distinctio. Nesciunt odio ullam expedita, neque fugit maiores
-    sunt perferendis placeat autem animi, nihil quis suscipit quibusdam ut reiciendis
-    doloribus natus nemo id quod illum aut culpa perspiciatis consequuntur tempore?
-    Facilis nam vitae iure quisquam eius harum consequatur sapiente assumenda, officia
-    voluptas quas numquam placeat, alias molestias nisi laudantium nesciunt perspiciatis
-    suscipit hic voluptate corporis id distinctio earum. Dolor reprehenderit fuga
-    dolore officia adipisci neque!
+  content: StreetWise Capital is an investment advisory & Financial Consulting Services firm. Our investment advisory delivers Portfolio Management,                    Financial planning and advisory services. Consulting services helps clients with business growth strategy, go-to-market strategy, Capital                    structure advisory, valuation and risk management services.
   enable: true
   image: images/company/company-group-pic.jpg
-  title: Creative UX/UI Design Agency
+  title: Services
 bg_image: images/feature-bg.jpg
 cta:
   enable: true
@@ -22,59 +13,46 @@ featured_service:
   enable: true
   service_item:
   - color: primary
-    content: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe enim
-      impedit repudiandae omnis est temporibus.
+    content: Portfolio management services for Discretionary clients
     icon: fas fa-flask
-    name: Interface Design
+    name: Portfolio Management
   - color: primary-dark
-    content: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe enim
-      impedit repudiandae omnis est temporibus.
+    content: Financial planning for non-discretionary clients
     icon: fas fa-leaf
-    name: Product Branding
+    name: Financial planning
   - color: primary-darker
-    content: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe enim
-      impedit repudiandae omnis est temporibus.
+    content: Business consulting including but not limited to business valuation, go-to-market strategy, data science, risk management etc. 
     icon: fas fa-lightbulb
-    name: Game Development
+    name: Business consulting
 layout: service
 service:
-  description: Far far away, behind the word mountains, far from the countries Vokalia
-    and Consonantia, <br> there live the blind texts. Separated they live in Bookmarksgrove
-    right at the coast of the Semantics
+  description: Our services are broadly categorized into Portfolio Management, Financial planning and business consulting
   enable: true
   service_item:
-  - content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut
+  - content: Strategic portfolio management based on deep fundamental analysis of businesses
     icon: fas fa-bullseye
-    name: Branding
-  - content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut
+    name: Strategic
+  - content: Tactical portfolio management based on machine learning and artificial intelligence
     icon: fas fa-layer-group
-    name: Web Design
-  - content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut
+    name: Tactical
+  - content: Financial planning for non-discretionary clients based on optical asset allocation
     icon: fas fa-image
-    name: App Design
-  - content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut
+    name: Financial planning
+  - content: Business valuation using business analysis and pricing
     icon: fas fa-bug
-    name: Start Up
-  - content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut
+    name: Valuation 
+  - content: Data Science and machine learning
     icon: fas fa-headphones-alt
-    name: Logo Design
-  - content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut
+    name: Data Science
+  - content: Go-to market strategy development
     icon: fas fa-leaf
-    name: Development
-  - content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut
+    name: Market strategy
+  - content: Financial risk management
     icon: fas fa-globe-asia
-    name: Brand Identity
-  - content: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut
+    name: Risk Management
+  - content: Data analysis for actionable business insights, dashboard design and development
     icon: fas fa-feather
-    name: Brand Identity
+    name: Data analysis
   title: Our Services
 title: Service
 ---

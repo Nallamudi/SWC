@@ -11,10 +11,6 @@ name = "About"
 url = "about/"
 weight = 2
 
-[[main]]
-name = "Project"
-url = "project/"
-weight = 3
 
 [[main]]
 name = "Blog"
@@ -23,27 +19,11 @@ weight = 4
 
 [[main]]
 weight = 5
-name = "More"
-hasChildren = true
+name = "Services"
+url = "service/"
+#hasChildren = true
 
-  [[main]]
-  parent = "More"
-  name = "Service"
-  url = "service/"
-  weight = 1
 
-  [[main]]
-  parent = "More"
-  name = "Pricing"
-  url = "pricing/"
-  weight = 2
-
-  [[main]]
-  parent = "More"
-  name = "FAQ"
-  url = "faq/"
-  weight = 3
-  
 [[main]]
 name = "Contact"
 url = "contact/"
@@ -56,25 +36,11 @@ name = "About"
 url = "about/"
 weight = 2
 
-[[footer]]
-name = "Project"
-url = "project/"
-weight = 3
 
 [[footer]]
-name = "Service"
+name = "Services"
 url = "service/"
 weight = 4
-
-[[footer]]
-name = "Pricing"
-url = "pricing/"
-weight = 5
-
-[[footer]]
-name = "FAQ"
-url = "faq/"
-weight = 6
 
 [[footer]]
 name = "Contact"
