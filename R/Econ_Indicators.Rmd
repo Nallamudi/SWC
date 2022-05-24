@@ -1,26 +1,32 @@
 ---
-title: "Macro Picture"
-author: "StreetWise Capital"
-date: '`r format(Sys.Date(), "%B %d, %Y")`'
+title: "Weekly Market Update"
+author: "Sarath Nallamudi"
+date: '`r format(Sys.Date(), "%Y-%m-%d")`'
 output: html_document
 knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding = encoding, output_dir = "D:/Market_Update/",
   output_file = "Weekly_Market_Update.html")})
+categories: ["Valuation", "Market Update", "Investment Strategies", "AI & Machine Learning"]
+tags: ["Valuation", "Market Update"]
 ---
 
 ```{r setup,  echo=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(
 	echo = FALSE,
 	message = FALSE,
-	warning = FALSE
+	warning = FALSE 
 )
+
 library(timeDate)
 library(timeSeries)
 library(quantmod)
 library(dplyr)
 library(ggplot2)
 
+#date: '`r format(Sys.Date(), "%B %d, %Y")`'
+
 #'`r paste0("Market_Update_", format(Sys.Date(), "%B %d, %Y"), ".html")`'
+#'
 ```
 
 
@@ -111,16 +117,29 @@ Enddt <- Sys.Date()
 ```
 
 ## Housing Market
-```{r Housing Market, echo=FALSE, error=FALSE, fig.asp=0.8, fig.width=10, message=FALSE, warning=FALSE}
-
+```{r Housing Market, error=FALSE, fig.asp=0.8, fig.width=10, message=FALSE, warning=FALSE, include=FALSE}
 # Housing Market
 # Housing Starts
 #getSymbols.FRED("HOUST", .GlobalEnv)
+
 getSymbols("HOUST", src = "FRED")
+
+# All transactions House price index for US
+getSymbols.FRED("USSTHPI", .GlobalEnv)
+
+# Existing home sales
+getSymbols.FRED("EXHOSLUSM495S", .GlobalEnv)
+
+# New home sales
+getSymbols.FRED("HSN1F", .GlobalEnv)
+```
+
+
+```{r Housinggraphs, echo=FALSE, error=FALSE, fig.asp=0.8, fig.width=10, message=FALSE, warning=FALSE}
 
 Housing_5yr <- HOUST[paste0(StartDt, Enddt, sep = "/")]
 Housing_5yr <- data.frame(Month = index(Housing_5yr), Value = coredata(Housing_5yr))
-rm(HOUST)
+
 
 Starts <- ggplot(data=Housing_5yr, aes(x=Month, y=HOUST))+
   geom_line()+
@@ -132,16 +151,11 @@ Starts <- ggplot(data=Housing_5yr, aes(x=Month, y=HOUST))+
     axis.text.x = element_text(angle = 45)
   )
 
-#Housing <- merge(HOUST, USSTHPI)
 
-#plot(Housing_5yr)
-
-# New home sales
-getSymbols.FRED("HSN1F", .GlobalEnv)
 
 New_Home_Sales <- HSN1F[paste(StartDt, Enddt, sep = "/")]
 New_Home_Sales <- data.frame(Month = index(New_Home_Sales), Value = coredata(New_Home_Sales))
-rm(HSN1F)
+
 New_Sales <- ggplot(data=New_Home_Sales, aes(x=Month, y=HSN1F))+
   geom_line()+
   labs(title = "New Home Sales")+
@@ -152,12 +166,11 @@ New_Sales <- ggplot(data=New_Home_Sales, aes(x=Month, y=HSN1F))+
     axis.text.x = element_text(angle = 45)
   )
 
-# Existing home sales
-getSymbols.FRED("EXHOSLUSM495S", .GlobalEnv)
+
 
 Existing_Home_Sales <- EXHOSLUSM495S[paste(StartDt, Enddt, sep = "/")]
 Existing_Home_Sales <- data.frame(Month = index(Existing_Home_Sales), Value = coredata(Existing_Home_Sales))
-rm(EXHOSLUSM495S)
+
 Exis_Sales <- ggplot(data=Existing_Home_Sales, aes(x=Month, y=EXHOSLUSM495S))+
   geom_line()+
   labs(title = "Existing Home Sales")+
@@ -166,12 +179,11 @@ Exis_Sales <- ggplot(data=Existing_Home_Sales, aes(x=Month, y=EXHOSLUSM495S))+
   SN_theme()
   
 
-# All transactions House price index for US
-getSymbols.FRED("USSTHPI", .GlobalEnv)
+
 
 House_Price_Index <- USSTHPI[paste(StartDt, Enddt, sep = "/")]
 House_Price_Index <- data.frame(Month = index(USSTHPI), Value = coredata(USSTHPI))
-rm(USSTHPI)
+
 PIndex <- ggplot(data=House_Price_Index, aes(x=Month, y=USSTHPI))+
   geom_line()+
   labs(title = "House Price Index")+
@@ -181,6 +193,11 @@ PIndex <- ggplot(data=House_Price_Index, aes(x=Month, y=USSTHPI))+
 
 gridExtra::grid.arrange(Starts, New_Sales, Exis_Sales, PIndex, nrow = 2)
 
+
+rm(HSN1F)
+rm(EXHOSLUSM495S)
+rm(USSTHPI)
+rm(HOUST)
 rm(Existing_Home_Sales)
 rm(House_Price_Index)
 rm(Housing_5yr)
@@ -369,7 +386,6 @@ plot(PI, main="Personal Income")
 
 ## Commodities
 ```{r Commodities, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
-
 #Commodities
 #Crude Oil
 getSymbols.FRED("DCOILWTICO", .GlobalEnv)
@@ -383,5 +399,10 @@ getSymbols.FRED("GOLDAMGBD228NLBM", .GlobalEnv)
 Gold <- GOLDAMGBD228NLBM[paste(StartDt, Enddt, sep = "/")]
 plot(Gold, main="Gold")
 
+
 ```
+## StreetWise Capital Services
+
+{{<youtube id="vyvF2QaXG2o" title="Investment Management Services">}}
+
 

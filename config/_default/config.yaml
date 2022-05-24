@@ -49,7 +49,3 @@ enableshortcodes: true
 ignoreFiles:
   ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
   
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
