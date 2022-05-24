@@ -44,4 +44,12 @@ mediaTypes:
 outputFormats:
   WebAppManifest:
     mediaType: application/manifest+json
-    rel: manifest
+    rel: blogdownmanifest
+enableshortcodes: true
+ignoreFiles:
+  ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+  
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

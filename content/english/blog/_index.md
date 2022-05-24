@@ -1,6 +1,6 @@
 ---
 bg_image: images/feature-bg.jpg
-description: this is meta description
+description: State of the financial markets, valuation and investment strategies
 draft: false
-title: Latest News
+title: Financial Markets
 ---

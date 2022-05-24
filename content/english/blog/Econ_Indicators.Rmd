@@ -1,0 +1,407 @@
+---
+title: "Weekly Market Update"
+author: "Sarath Nallamudi"
+date: '`r format(Sys.Date(), "%Y-%m-%d")`'
+output: html_document
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "D:/Market_Update/",
+  output_file = "Weekly_Market_Update.html")})
+categories: ["Valuation", "Market Update", "Investment Strategies", "AI & Machine Learning"]
+tags: ["Valuation", "Market Update"]
+---
+
+```{r setup,  echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE 
+)
+library(timeDate)
+library(timeSeries)
+library(quantmod)
+library(dplyr)
+library(ggplot2)
+
+#date: '`r format(Sys.Date(), "%B %d, %Y")`'
+
+#'`r paste0("Market_Update_", format(Sys.Date(), "%B %d, %Y"), ".html")`'
+#'
+```
+
+
+```{r Set Theme,  echo=FALSE, message=FALSE, warning=FALSE}
+
+SN_theme <- function(base_size = 14) {
+  theme_bw(base_size = base_size) %+replace%
+    theme(
+        #The whole figure
+      plot.title = element_text(size = rel(1), face = "bold", margin = margin(0,0,5,0), hjust = 0.5, colour = "red"),
+        # Area of the graph
+      panel.grid.minor = element_blank(),
+      panel.border = element_blank(),
+      # Axix
+      axis.title = element_text(size = rel(0.85), face = "bold", hjust=0.5, colour = "blue"),
+      axis.text = element_text(size = rel(0.70), face = "bold"),
+      axis.line = element_line(color = "black", arrow = arrow(length = unit(0.3, "lines"), type = "closed")),
+      # Legend
+      legend.title = element_text(size = rel(0.85), face = "bold"),
+      legend.text = element_text(size = rel(0.70), face = "bold"),
+      legend.key = element_rect(fill = "transparent", colour = NA),
+      legend.key.size = unit(1.5, "lines"),
+      legend.background = element_rect(fill = "transparent", colour = NA),
+     
+      # Facetting 
+      strip.background = element_rect(fill = "#17252D", color = "#17252D"),
+      strip.text = element_text(size = rel(0.85), face = "bold", color = "white", margin = margin(5,0,5,0))
+    )
+}
+
+
+
+```
+
+# Macro Economic Environment
+
+```{r Fred Function, echo=FALSE, message=FALSE, warning=FALSE}
+assignInNamespace(x = "getSymbols.FRED", ns = "quantmod",  value =  
+                    
+                    function (Symbols, env, return.class = "xts", ...)
+                    {
+                      importDefaults("getSymbols.FRED")
+                      this.env <- environment()
+                      for (var in names(list(...))) {
+                        assign(var, list(...)[[var]], this.env)
+                      }
+                      if (!hasArg("verbose"))
+                        verbose <- FALSE
+                      if (!hasArg("auto.assign"))
+                        auto.assign <- TRUE
+                      FRED.URL <- "https://fred.stlouisfed.org/graph/fredgraph.csv?"
+                      tmp <- tempfile()
+                      on.exit(unlink(tmp))
+                      for (i in 1:length(Symbols)) {
+                        if (verbose)
+                          cat("downloading ", Symbols[[i]], ".....\n\n")
+                        URL <- paste(FRED.URL, "id=", Symbols[[i]] 
+                                     , sep = "")
+                        try.download.file(URL, destfile = tmp, quiet = !verbose,
+                                          ...)
+                        fr <- read.csv(tmp, na.string = ".")
+                        if (verbose)
+                          cat("done.\n")
+                        fr <- xts(as.matrix(fr[, -1]), as.Date(fr[, 1], origin = "1970-01-01"),
+                                  src = "FRED", updated = Sys.time())
+                        dim(fr) <- c(NROW(fr), 1)
+                        colnames(fr) <- as.character(toupper(Symbols[[i]]))
+                        fr <- convert.time.series(fr = fr, return.class = return.class)
+                        Symbols[[i]] <- toupper(gsub("\\^", "", Symbols[[i]]))
+                        if (auto.assign)
+                          assign(Symbols[[i]], fr, env)
+                      }
+                      if (auto.assign)
+                        return(Symbols)
+                      return(fr)
+                      
+                    }
+)
+# need
+try.download.file   <- quantmod:::try.download.file
+convert.time.series <- quantmod:::convert.time.series
+```
+
+
+```{r Set Dates, echo=FALSE, message=FALSE, warning=FALSE}
+StartDt <- as.Date("2014-01-01")
+Enddt <- Sys.Date()
+```
+
+## Housing Market
+```{r Housing Market, error=FALSE, fig.asp=0.8, fig.width=10, message=FALSE, warning=FALSE, include=FALSE}
+# Housing Market
+# Housing Starts
+#getSymbols.FRED("HOUST", .GlobalEnv)
+
+getSymbols("HOUST", src = "FRED")
+
+# All transactions House price index for US
+getSymbols.FRED("USSTHPI", .GlobalEnv)
+
+# Existing home sales
+getSymbols.FRED("EXHOSLUSM495S", .GlobalEnv)
+
+# New home sales
+getSymbols.FRED("HSN1F", .GlobalEnv)
+```
+
+
+```{r Housinggraphs, echo=FALSE, error=FALSE, fig.asp=0.8, fig.width=10, message=FALSE, warning=FALSE}
+
+Housing_5yr <- HOUST[paste0(StartDt, Enddt, sep = "/")]
+Housing_5yr <- data.frame(Month = index(Housing_5yr), Value = coredata(Housing_5yr))
+
+
+Starts <- ggplot(data=Housing_5yr, aes(x=Month, y=HOUST))+
+  geom_line()+
+  labs(title = "Housing Starts")+
+       xlab("Time")+
+       ylab("# of Permits")+
+  SN_theme()+
+  theme(
+    axis.text.x = element_text(angle = 45)
+  )
+
+
+
+New_Home_Sales <- HSN1F[paste(StartDt, Enddt, sep = "/")]
+New_Home_Sales <- data.frame(Month = index(New_Home_Sales), Value = coredata(New_Home_Sales))
+
+New_Sales <- ggplot(data=New_Home_Sales, aes(x=Month, y=HSN1F))+
+  geom_line()+
+  labs(title = "New Home Sales")+
+       xlab("Time")+
+       ylab("# of Sales")+
+  SN_theme()+
+  theme(
+    axis.text.x = element_text(angle = 45)
+  )
+
+
+
+Existing_Home_Sales <- EXHOSLUSM495S[paste(StartDt, Enddt, sep = "/")]
+Existing_Home_Sales <- data.frame(Month = index(Existing_Home_Sales), Value = coredata(Existing_Home_Sales))
+
+Exis_Sales <- ggplot(data=Existing_Home_Sales, aes(x=Month, y=EXHOSLUSM495S))+
+  geom_line()+
+  labs(title = "Existing Home Sales")+
+       xlab("Time")+
+       ylab("# of Sales")+
+  SN_theme()
+  
+
+
+
+House_Price_Index <- USSTHPI[paste(StartDt, Enddt, sep = "/")]
+House_Price_Index <- data.frame(Month = index(USSTHPI), Value = coredata(USSTHPI))
+
+PIndex <- ggplot(data=House_Price_Index, aes(x=Month, y=USSTHPI))+
+  geom_line()+
+  labs(title = "House Price Index")+
+       xlab("Time")+
+       ylab("Price Index")+
+  SN_theme()
+
+gridExtra::grid.arrange(Starts, New_Sales, Exis_Sales, PIndex, nrow = 2)
+
+
+rm(HSN1F)
+rm(EXHOSLUSM495S)
+rm(USSTHPI)
+rm(HOUST)
+rm(Existing_Home_Sales)
+rm(House_Price_Index)
+rm(Housing_5yr)
+rm(New_Home_Sales)
+
+
+
+```
+
+## Job Market
+```{r Job Market, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.asp=1}
+
+#Job Market
+#Initial Jobless Claims
+
+getSymbols.FRED("ICSA", .GlobalEnv)
+
+Initial_Jobless <- ICSA[paste(StartDt, Enddt, sep = "/")]
+Initial_Jobless <- data.frame(Month = index(Initial_Jobless), Value = coredata(Initial_Jobless))
+
+Init <- ggplot(data=Initial_Jobless, aes(x=Month, y=ICSA))+
+  geom_line()+
+  labs(title = "Initial Jobless Claims")+
+       xlab("Time")+
+       ylab("# of Claims")+
+  SN_theme()
+Initial_Jobless$ICSA <- ifelse(Initial_Jobless$ICSA > 500000, 500000, Initial_Jobless$ICSA)
+
+Init_mod <- ggplot(data=Initial_Jobless, aes(x=Month, y=ICSA))+
+  geom_line()+
+  labs(title = "Initial Jobless Claims")+
+       xlab("Time")+
+       ylab("# of Claims")+
+ # xlim(as.Date("2020-03-01", origin = "1970-01-01"), Sys.Date())+
+  SN_theme()
+rm(ICSA)
+rm(Initial_Jobless)
+
+# Continuous jobless claims
+getSymbols.FRED("CCSA", .GlobalEnv)
+
+Cont_Jobless <- CCSA[paste(StartDt, Enddt, sep = "/")]
+Cont_Jobless <- data.frame(Month = index(Cont_Jobless), Value = coredata(Cont_Jobless))
+Cont_Jobless$CCSA <- ifelse(Cont_Jobless$CCSA > 4000000, 4000000, Cont_Jobless$CCSA)
+
+Cont <- ggplot(data=Cont_Jobless, aes(x=Month, y=CCSA))+
+  geom_line()+
+  labs(title = "Continuous Jobless Claims")+
+       xlab("Time")+
+       ylab("# of Claims")+
+ # xlim(as.Date("2020-03-01", origin = "1970-01-01"), Sys.Date())+
+  SN_theme()
+
+rm(CCSA)
+rm(Cont_Jobless)
+
+#Civilian Unemployment Rate
+getSymbols.FRED("UNRATE", .GlobalEnv)
+
+Unemployment_Rate <- UNRATE[paste(StartDt, Enddt, sep = "/")]
+Unemployment_Rate <- data.frame(Month = index(Unemployment_Rate), Value = coredata(Unemployment_Rate))
+
+Unemp <- ggplot(data=Unemployment_Rate, aes(x=Month, y=UNRATE))+
+  geom_line()+
+  labs(title = "Unemployment Rate")+
+       xlab("Time")+
+       ylab("%")+
+ # xlim(as.Date("2020-03-01", origin = "1970-01-01"), Sys.Date())+
+  SN_theme()
+
+rm(UNRATE)
+rm(Unemployment_Rate)
+
+#Total Nonfarm Payrolls
+getSymbols.FRED("PAYEMS", .GlobalEnv)
+
+Payrolls <- PAYEMS[paste(StartDt, Enddt, sep = "/")]
+Payrolls <- data.frame(Month = index(Payrolls), Value = coredata(Payrolls))
+
+NF_PR <- ggplot(data=Payrolls, aes(x=Month, y=PAYEMS))+
+  geom_line()+
+  labs(title = "Total Non-Farm Payrolls")+
+       xlab("Time")+
+       ylab("%")+
+ # xlim(as.Date("2020-03-01", origin = "1970-01-01"), Sys.Date())+
+  SN_theme()
+
+rm(PAYEMS)
+rm(Payrolls)
+
+gridExtra::grid.arrange(Init, Init_mod, Cont, Unemp, NF_PR, nrow=3)
+
+```
+
+## Dollar Index
+```{r Dollar, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+#Trade weighted US dollar index, major currencies, goods
+
+getSymbols.FRED("DTWEXM", .GlobalEnv)
+
+Dollar_Index <- DTWEXM[paste(StartDt, Enddt, sep = "/")]
+Dollar_Index <- data.frame(Month = index(Dollar_Index), Value = coredata(Dollar_Index))
+
+Dollar_IDX <- ggplot(data=Month, aes(x=Month, y=DTWEXM))+
+  geom_line()+
+  labs(title = "Total Non-Farm Payrolls")+
+       xlab("Time")+
+       ylab("%")+
+ # xlim(as.Date("2020-03-01", origin = "1970-01-01"), Sys.Date())+
+  SN_theme()
+
+plot(Dollar_Index, main="Dollar Index")
+```
+
+## Gross Domestic Product
+```{r GDP, echo=FALSE, message=FALSE, warning=FALSE}
+# Real Gross Domestic Product
+
+getSymbols.FRED("A191RL1Q225SBEA", .GlobalEnv)
+
+Real_GDP <- A191RL1Q225SBEA[paste(StartDt, Enddt, sep = "/")]
+plot(Real_GDP)
+```
+
+## Treasury Market
+```{r Treasury, echo=FALSE, message=FALSE, warning=FALSE}
+#Treasury Market
+# 5 Year Forward inflation expectation rate
+getSymbols.FRED("T5YIFRM", .GlobalEnv)
+
+Exp_Inflation <- T5YIFRM[paste(StartDt, Enddt, sep = "/")]
+plot(Exp_Inflation)
+
+# 3 month Treasury Bill
+getSymbols.FRED("DGS3MO", .GlobalEnv)
+
+Three_Month <- DGS3MO[paste(StartDt, Enddt, sep = "/")]
+plot(Three_Month, main="Three month Treasury Bill")
+
+# 10 Year Treasury Note
+getSymbols.FRED("DGS10", .GlobalEnv)
+
+Ten_Year <- DGS10[paste(StartDt, Enddt, sep = "/")]
+plot(Ten_Year, main="Ten year Treasury Note")
+
+
+# 10 Year Minus 3-Month
+getSymbols.FRED("T10Y3M", .GlobalEnv)
+
+Ten_three <- T10Y3M[paste(StartDt, Enddt, sep = "/")]
+plot(Ten_three, main="Ten year minus Three Month")
+
+# 10 Year Minus 2-year
+getSymbols.FRED("T10Y2Y", .GlobalEnv)
+
+Ten_Two <- T10Y2Y[paste(StartDt, Enddt, sep = "/")]
+plot(Ten_Two, main="Ten year minus Two year")
+
+# 10 Year Inflation Indexed 
+getSymbols.FRED("DFII10", .GlobalEnv)
+
+Ten_II <- DFII10[paste(StartDt, Enddt, sep = "/")]
+plot(Ten_II, main="Ten year Inflation Indexed Security")
+```
+
+## US Consumer
+```{r Consumer, echo=FALSE, message=FALSE, warning=FALSE}
+#US COnsumer
+getSymbols.FRED("UMCSENT", .GlobalEnv)
+
+Consumer_Sentiment <- UMCSENT[paste(StartDt, Enddt, sep = "/")]
+plot(Consumer_Sentiment, main="Consumer Sentiment")
+
+#Personal Consumption Expenditures - Exclusing Food and Energy
+getSymbols.FRED("DPCCRC1M027SBEA", .GlobalEnv)
+
+PCE_No_FE <- DPCCRC1M027SBEA[paste(StartDt, Enddt, sep = "/")]
+plot(PCE_No_FE, main="Personal Consumption Expenditures")
+
+#Personal Income
+getSymbols.FRED("PI", .GlobalEnv)
+
+PI <- PI[paste(StartDt, Enddt, sep = "/")]
+plot(PI, main="Personal Income")
+```
+
+## Commodities
+```{r Commodities, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+#Commodities
+#Crude Oil
+getSymbols.FRED("DCOILWTICO", .GlobalEnv)
+
+WTI <- DCOILWTICO[paste(StartDt, Enddt, sep = "/")]
+plot(WTI, main="Crude Oil Prices")
+
+#Gold
+getSymbols.FRED("GOLDAMGBD228NLBM", .GlobalEnv)
+
+Gold <- GOLDAMGBD228NLBM[paste(StartDt, Enddt, sep = "/")]
+plot(Gold, main="Gold")
+
+
+```
+## StreetWise Capital Services
+
+{{<youtube id="vyvF2QaXG2o" title="Investment Management Services">}}
+
+

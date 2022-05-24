@@ -110,25 +110,25 @@ sidebar = ["recent_posts", "taxonomy_category", "taxonomy_tags"]
 [[social]]
 title = "facebook"
 icon = "fab fa-facebook"  # fontawesome icon pack : https://fontawesome.com/icons/
-link = "#"
+link = "https://www.facebook.com/StreetWiseCapital"
 
 [[social]]
 title = "twitter"
 icon = "fab fa-twitter"  # fontawesome icon pack : https://fontawesome.com/icons/
-link = "#"
+link = "https://twitter.com/SNallamudi"
 
-[[social]]
-title = "instagram"
-icon = "fab fa-instagram" # fontawesome icon pack : https://fontawesome.com/icons/
-link = "#"
+#[[social]]
+#title = "instagram"
+#icon = "fab fa-instagram" # fontawesome icon pack : https://fontawesome.com/icons/
+#link = "#"
 
-[[social]]
-title = "github"
-icon = "fab fa-github" # fontawesome icon pack : https://fontawesome.com/icons/
-link = "#"
+#[[social]]
+#title = "github"
+#icon = "fab fa-github" # fontawesome icon pack : https://fontawesome.com/icons/
+#link = "#"
 
 [[social]]
 title = "linkedin"
 icon = "fab fa-linkedin" # fontawesome icon pack : https://fontawesome.com/icons/
-link = "#"
+link = "https://www.linkedin.com/company/streetwisecapital/"
 
