@@ -47,5 +47,4 @@ outputFormats:
     rel: blogdownmanifest
 enableshortcodes: true
 ignoreFiles:
-  ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
-  
+  ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.qmd$", "\\.ipynb$"]

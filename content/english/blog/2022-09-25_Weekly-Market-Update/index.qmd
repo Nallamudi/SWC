@@ -1,0 +1,132 @@
+---
+title: "Weekly Market Update"
+author: "Sarath Nallamudi"
+format: hugo
+editor: visual
+date: 2022-09-25
+freeze: true
+draft: true
+categories: ["Market Update"]
+tags: ["Market Update"]
+---
+
+## Equity markets
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false
+
+library(tidyverse)
+library(lubridate)
+library(Technical)
+library(IBrokers)
+
+library(TTR)
+library(quantmod)
+library(PerformanceAnalytics)
+library(PortfolioAnalytics)
+
+options(scipen = 99999)
+```
+
+With fed increasing the fed funds rate by 75 basis points, there was a blood bath in the markets. S&P had a worst week and lost 5%. 
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false
+#| output: true
+
+
+spx_daily <- getSymbols.yahoo("^GSPC", from='2000-01-01', periodicity = 'daily', auto.assign=FALSE)
+spx_daily <- data.frame(Date = index(spx_daily), coredata(spx_daily))
+colnames(spx_daily) <- c("PDate", "Open","High","Low","Close","Volume","Adj")
+
+spx_daily<- add_dates(spx_daily, "PDate")
+spx_daily$Return <- TTR::ROC(spx_daily$Close)
+
+Weekly <- spx_daily%>%
+  group_by(Price_Week)%>%
+  summarise(
+    Weekly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
+    )
+
+Yearly <- spx_daily%>%
+  group_by(Price_Year)%>%
+  summarise(
+    Yearly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
+  )
+
+Monthly <- spx_daily%>%
+  group_by(Price_Month)%>%
+  summarise(
+    Monthly_return = round((last(Adj) - first(Adj)) / first(Adj),4),
+    Month = unique(format(PDate, "%B"))
+  )
+
+Monthly$Month <- factor(Monthly$Month, levels = unique(Monthly$Month))
+Monthly$Year <- str_sub(Monthly$Price_Month, 3, 6)
+#Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
+
+ggplot(Monthly%>%filter(Year >= year(Sys.Date())-4), aes(x=Year, y=Month, fill = Monthly_return))+
+  geom_tile(color="black")+
+  geom_text(aes(label= round(Monthly_return*100,1)))+
+ # scale_fill_gradient(low="red", high="green")+
+  scale_fill_gradientn(colours = hcl.colors(20, "RdYlGn"))+
+  scale_y_discrete(limits=rev)+
+  labs(title="Monthly return for S&P")+
+  theme(legend.position = "none")
+  
+  
+
+```
+
+
+## Bond markets
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false
+#| 
+
+```
+ 
+## Commodities
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false
+#| 
+
+```
+
+## Currencies
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false
+#| 
+
+```
+
+## Crypto
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false
+#| 
+
+```
+
+## Next week
