@@ -5,7 +5,6 @@ format: hugo
 editor: visual
 date: '`r format(Sys.time(), "%Y-%m-%d")`'
 freeze: true
-draft: false
 categories: ["Markets"]
 tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
 ---
@@ -38,7 +37,7 @@ Fred_Func()
 
 ```
 
-After the poor performance in 2022, stock market had a good start to 2023. Technology and small cap companies outperformed the S&P last week and for the month of January. 
+After the poor performance in 2022, stock market had a good start to 2023. Technology and small cap companies outperformed the S&P last week and for the month of January.
 
 ```{r Get_Data}
 #| echo: false
@@ -229,6 +228,7 @@ Weekly%>%
 ```
 
 ### S&P 500
+
 S&P 500 has an impressive 6.6% gain in the first month of 2023. It is the biggest percent gain for S&P since 2019 in January
 
 ```{r SPX_Monthly}
@@ -255,8 +255,11 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   
 
 ```
+
 ### NASDAQ
-Technology stocks outperformed S&P significantly to start the year with a solid gain of 11.5%. Only April 2020 had higher gain than January 2023 since the last 5 years. 
+
+Technology stocks outperformed S&P significantly to start the year with a solid gain of 11.5%. Only April 2020 had higher gain than January 2023 since the last 5 years.
+
 ```{r NDX_Monthly}
 #| echo: false
 #| warning: false
@@ -281,8 +284,11 @@ ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   
 
 ```
+
 ### DOW Jones
+
 However, blue chip dow stocks underperformed significanlty in January
+
 ```{r DJI_Monthly}
 #| echo: false
 #| warning: false
@@ -307,8 +313,11 @@ ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   
 
 ```
+
 ### Russell
-Small cap stocks showed strength with 10.3% gain. The index recovered it's losses in December 2022 and gained ~4% over December losses
+
+Small cap stocks showed strength with 10.3% gain. The index recovered it's losses in December 2022 and gained \~4% over December losses
+
 ```{r RUT_Monthly}
 #| echo: false
 #| warning: false
@@ -368,7 +377,9 @@ rates <- c("3Mos","6Mos","1Year","2Years","5Years","7Years","10Years","30Years")
 ```
 
 ### Interest rates
-Longer term interest rates for treasuries are trending down while shorter term rates are staying flat to slightly down for the year. 
+
+Longer term interest rates for treasuries are trending down while shorter term rates are staying flat to slightly down for the year.
+
 ```{r Interest_Rates}
 #| echo: false
 #| warning: false
@@ -390,8 +401,8 @@ ggplot(aes(x= Date))+
 
 ```
 
-
 ### Yeild Curve
+
 Yield curve continues to slope negatively (inverted). At the higher end, it appears that it is starting to slope positively or flat but at the lower end, it still slopes significantly negative
 
 ```{r Yield_Curve}
