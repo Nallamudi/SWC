@@ -2,8 +2,7 @@
 title: "Weekly Market Update"
 author: "Sarath Nallamudi"
 format: hugo
-editor: visual
-date: '`r format(Sys.time(), "%Y-%m-%d")`'
+date: '`r format(Sys.Date(), "%Y-%m-%d")`'
 freeze: true
 categories: ["Markets"]
 tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
@@ -11,11 +10,8 @@ tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
 
 ## Equity markets
 
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
+```{r echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 
 library(tidyverse)
 library(lubridate)
@@ -39,12 +35,8 @@ Fred_Func()
 
 After the poor performance in 2022, stock market had a good start to 2023. Technology and small cap companies outperformed the S&P last week and for the month of January.
 
-```{r Get_Data}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
+```{r Get_Data, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 
 #### SP500
 SPX_Daily <- getSymbols.yahoo("^GSPC", from='2000-01-01', periodicity = 'daily', auto.assign=FALSE)
@@ -187,14 +179,10 @@ VIX_Monthly <- VIX_Daily%>%
 
 ```
 
-```{r Weekly Return}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
-#| results: asis
-#| tbl-cap: "Stock market this week" 
+```{r echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, eval=FALSE}
+# knitr::opts_chunk(
+#   tbl-cap: "Weekly Return"
+# )
 
 Weekly <- data.frame(Index = "S&P 500", SPX_Weekly[nrow(SPX_Weekly),])
 Weekly <- rbind(Weekly, c(Index="Nasdaq", NDX_Weekly[nrow(NDX_Weekly),]))
@@ -231,13 +219,8 @@ Weekly%>%
 
 S&P 500 has an impressive 6.6% gain in the first month of 2023. It is the biggest percent gain for S&P since 2019 in January
 
-```{r SPX_Monthly}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
-#| 
+```{r SPX_Monthly, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 SPX_Monthly$Month <- factor(SPX_Monthly$Month, levels = unique(SPX_Monthly$Month))
 SPX_Monthly$Year <- str_sub(SPX_Monthly$Price_Month, 3, 6)
 #Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
@@ -260,13 +243,8 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 Technology stocks outperformed S&P significantly to start the year with a solid gain of 11.5%. Only April 2020 had higher gain than January 2023 since the last 5 years.
 
-```{r NDX_Monthly}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
-#| 
+```{r NDX_Monthly, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+ 
 NDX_Monthly$Month <- factor(NDX_Monthly$Month, levels = unique(NDX_Monthly$Month))
 NDX_Monthly$Year <- str_sub(NDX_Monthly$Price_Month, 3, 6)
 #Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
@@ -289,13 +267,8 @@ ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 However, blue chip dow stocks underperformed significanlty in January
 
-```{r DJI_Monthly}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
-#| 
+```{r DJI_Monthly, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 DJI_Monthly$Month <- factor(DJI_Monthly$Month, levels = unique(DJI_Monthly$Month))
 DJI_Monthly$Year <- str_sub(DJI_Monthly$Price_Month, 3, 6)
 #Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
@@ -318,13 +291,8 @@ ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 Small cap stocks showed strength with 10.3% gain. The index recovered it's losses in December 2022 and gained \~4% over December losses
 
-```{r RUT_Monthly}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
-#| 
+```{r RUT_Monthly, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 RUT_Monthly$Month <- factor(RUT_Monthly$Month, levels = unique(RUT_Monthly$Month))
 RUT_Monthly$Year <- str_sub(RUT_Monthly$Price_Month, 3, 6)
 #Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
@@ -345,25 +313,15 @@ ggplot(RUT_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ## Bond markets
 
-```{r Get Fred Data}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: false
-
+```{r Get Fred Data, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
 
 Treasury_Symbols <- c("DGS3MO", "DGS6MO","DFF","DGS1", "DGS2", "DGS5","DGS7","DGS10", "DGS30")
 getSymbols.FRED(Symbols = Treasury_Symbols, env = globalenv(), versbose= FALSE)
 
 ```
 
-```{r Treasuries}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
+```{r Treasuries, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 
 while (!(exists("DGS3MO", envir = parent.frame()) && exists("DGS6MO", envir = parent.frame()) && exists("DGS1", envir = parent.frame()) && exists("DGS2", envir = parent.frame()) && exists("DGS5", envir = parent.frame()) && exists("DGS7", envir = parent.frame()) && exists("DGS10", envir = parent.frame()) && exists("DGS30", envir = parent.frame()) )) {
   Sys.sleep(1)
@@ -380,12 +338,8 @@ rates <- c("3Mos","6Mos","1Year","2Years","5Years","7Years","10Years","30Years")
 
 Longer term interest rates for treasuries are trending down while shorter term rates are staying flat to slightly down for the year.
 
-```{r Interest_Rates}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
+```{r Interest_Rates, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 
 Treasuries%>%
   filter(year(Date)>= 2022)%>%
@@ -405,12 +359,8 @@ ggplot(aes(x= Date))+
 
 Yield curve continues to slope negatively (inverted). At the higher end, it appears that it is starting to slope positively or flat but at the lower end, it still slopes significantly negative
 
-```{r Yield_Curve}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
+```{r Yield_Curve, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 
 Treasuries[nrow(Treasuries),]%>%
   pivot_longer(cols=rates)%>%
@@ -423,12 +373,8 @@ theme_custom()
 
 ```
 
-```{r Yield_Curve_inv}
-#| echo: false
-#| warning: false
-#| message: false
-#| error: false
-#| output: true
+```{r Yield_Curve_inv, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+
 
 Treasuries%>%
   filter(year(Date)>= 2022)%>%
