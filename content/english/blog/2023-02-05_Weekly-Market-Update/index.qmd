@@ -250,7 +250,8 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   scale_y_discrete(limits=rev)+
   labs(title="Monthly return for S&P")+
   theme(legend.position = "none",
-        title = element_text(colour = "darkred"))
+        title = element_text(colour = "darkred"))+
+  theme_custom()
   
   
 
@@ -279,7 +280,8 @@ ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   scale_y_discrete(limits=rev)+
   labs(title="Monthly return for Nasdaq")+
   theme(legend.position = "none",
-        title = element_text(colour = "darkred"))
+        title = element_text(colour = "darkred"))+
+  theme_custom()
   
   
 
@@ -308,7 +310,8 @@ ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   scale_y_discrete(limits=rev)+
   labs(title="Monthly return for DOW")+
   theme(legend.position = "none",
-        title = element_text(colour = "darkred"))
+        title = element_text(colour = "darkred"))+
+  theme_custom()
   
   
 
@@ -337,7 +340,8 @@ ggplot(RUT_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   scale_y_discrete(limits=rev)+
   labs(title="Monthly return for Russell")+
   theme(legend.position = "none",
-        title = element_text(colour = "darkred"))
+        title = element_text(colour = "darkred"))+
+  theme_custom()
   
   
 
