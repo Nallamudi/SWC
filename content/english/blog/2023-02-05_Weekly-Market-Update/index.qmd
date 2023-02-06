@@ -250,9 +250,9 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   scale_fill_gradientn(colours = hcl.colors(20, "RdYlGn"))+
   scale_y_discrete(limits=rev)+
   labs(title="Monthly return for S&P")+
-  theme(legend.position = "none",
-        title = element_text(colour = "darkred"))+
-  theme_custom()
+    theme_custom()+
+  theme(title = element_text(colour = "darkred"))+
+  guides(fill=guide_legend(title="Return"))
   
   
 
@@ -282,7 +282,8 @@ ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   labs(title="Monthly return for Nasdaq")+
   theme(legend.position = "none",
         title = element_text(colour = "darkred"))+
-  theme_custom()
+  theme_custom()+
+  guides(fill=guide_legend(title="Return"))
   
   
 
@@ -312,7 +313,8 @@ ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   labs(title="Monthly return for DOW")+
   theme(legend.position = "none",
         title = element_text(colour = "darkred"))+
-  theme_custom()
+  theme_custom()+
+  guides(fill=guide_legend(title="Return"))
   
   
 
@@ -342,7 +344,8 @@ ggplot(RUT_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
   labs(title="Monthly return for Russell")+
   theme(legend.position = "none",
         title = element_text(colour = "darkred"))+
-  theme_custom()
+  theme_custom()+
+  guides(fill=guide_legend(title="Return"))
   
   
 
