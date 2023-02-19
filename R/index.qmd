@@ -286,7 +286,6 @@ VIX_Monthly <- VIX_Daily%>%
 #| message: false
 #| error: false
 #| output: true
-#| results: asis
 #| tbl-cap: "Stock market this week" 
 
 Weekly <- data.frame(Index = "S&P 500", SPX_Weekly[nrow(SPX_Weekly),])
@@ -298,16 +297,26 @@ Weekly <- rbind(Weekly, c(Index="VIX", VIX_Weekly[nrow(VIX_Weekly),]))
 # Weekly%>%
 #   gt()%>%
 #   fmt_percent(columns = "Weekly_return")%>%
+#   fmt_number(columns = c("Open","High","Low","Close"), decimals = 0)%>%
 #   cols_label(Index="Index",Price_Week = "Week", Weekly_return = "Weekly Return")%>%
 #   tab_header("Stock market this week")%>%
 #   tab_source_note("Source: Yahoo")
-
+# 
 # Weekly%>%
 #   datatable(filter = "none",
 #             style = "auto",
-#             colnames = c("Index","Week", "Weekly Return"))%>%
-#   formatPercentage(columns = "Weekly_return", digits = 2)
-  
+#             rownames = FALSE,
+#             colnames = c("Index","Week", "Open","High","Low","Close", "Weekly Return"))%>%
+#   formatPercentage(columns = "Weekly_return", digits = 2)%>%
+#   formatRound(columns = c("Open","High","Low","Close"), digits=0)%>%
+#   formatStyle(
+#     columns = "Weekly_return",
+#     color = styleInterval(
+#       cuts = 0, 
+#       values = c("red", "green")
+#     )
+#   )
+
 Weekly%>%
   mutate(
     Weekly_return = Weekly_return *100
