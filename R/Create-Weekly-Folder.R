@@ -5,4 +5,5 @@ Content_Folder <- paste0(here::here(), "/content/english/blog/")
 Weekly_Folder <- paste0(Content_Folder, format(Sys.Date(),"%Y-%m-%d"),"_Weekly-Market-Update/")
 
 Create_Dir(Weekly_Folder)
+
 file.copy(paste0(here::here(),"/R/index.qmd"), paste0(Weekly_Folder, "index.qmd"))
