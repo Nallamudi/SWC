@@ -3,7 +3,7 @@ title: "Weekly Market Update"
 author: "Sarath Nallamudi"
 format: hugo
 editor: visual
-date: '`r format(Sys.time(), "%Y-%m-%d")`'
+date: '`r format(Sys.Date(), "%Y-%m-%d")`'
 freeze: true
 categories: ["Markets"]
 tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
@@ -38,7 +38,7 @@ Fred_Func()
 
 ```
 
-Equity markets took a pause last week after the very good performance the week prior. Most indexes stayed pretty much flat to slightly down for the week.
+Equity markets were still consolidating last week above the 200 day moving averages. CPI day last week couldn't provide any resolution to the markets on either side.
 
 ```{r Get_Data}
 #| echo: false
@@ -55,23 +55,43 @@ colnames(SPX_Daily) <- c("PDate", "Open","High","Low","Close","Volume","Adj")
 SPX_Daily<- add_dates(SPX_Daily, "PDate")
 SPX_Daily$Return <- TTR::ROC(SPX_Daily$Close)
 
+#SPX_Daily <- Daily_Metrics(SPX_Daily, "PDate")
+
 SPX_Weekly <- SPX_Daily%>%
   group_by(Price_Week)%>%
   summarise(
-    Weekly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
-    )
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Weekly_return = ROC(Close)
+  )
 
 SPX_Yearly <- SPX_Daily%>%
   group_by(Price_Year)%>%
   summarise(
-    Yearly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Yearly_return = ROC(Close)
   )
 
 SPX_Monthly <- SPX_Daily%>%
   group_by(Price_Month)%>%
   summarise(
-    Monthly_return = round((last(Adj) - first(Adj)) / first(Adj),4),
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj),
     Month = unique(format(PDate, "%B"))
+    )%>%
+  mutate(
+    Monthly_return = ROC(Close)
   )
 
 
@@ -86,20 +106,38 @@ NDX_Daily$Return <- TTR::ROC(NDX_Daily$Close)
 NDX_Weekly <- NDX_Daily%>%
   group_by(Price_Week)%>%
   summarise(
-    Weekly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
-    )
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Weekly_return = ROC(Close)
+  )
 
 NDX_Yearly <- NDX_Daily%>%
   group_by(Price_Year)%>%
   summarise(
-    Yearly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Yearly_return = ROC(Close)
   )
 
 NDX_Monthly <- NDX_Daily%>%
   group_by(Price_Month)%>%
   summarise(
-    Monthly_return = round((last(Adj) - first(Adj)) / first(Adj),4),
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj),
     Month = unique(format(PDate, "%B"))
+    )%>%
+  mutate(
+    Monthly_return = ROC(Close)
   )
 
 #### Dow Jones
@@ -114,20 +152,38 @@ DJI_Daily$Return <- TTR::ROC(DJI_Daily$Close)
 DJI_Weekly <- DJI_Daily%>%
   group_by(Price_Week)%>%
   summarise(
-    Weekly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
-    )
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Weekly_return = ROC(Close)
+  )
 
 DJI_Yearly <- DJI_Daily%>%
   group_by(Price_Year)%>%
   summarise(
-    Yearly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Yearly_return = ROC(Close)
   )
 
 DJI_Monthly <- DJI_Daily%>%
   group_by(Price_Month)%>%
   summarise(
-    Monthly_return = round((last(Adj) - first(Adj)) / first(Adj),4),
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj),
     Month = unique(format(PDate, "%B"))
+    )%>%
+  mutate(
+    Monthly_return = ROC(Close)
   )
 
 #### Russell
@@ -142,20 +198,38 @@ RUT_Daily$Return <- TTR::ROC(RUT_Daily$Close)
 RUT_Weekly <- RUT_Daily%>%
   group_by(Price_Week)%>%
   summarise(
-    Weekly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
-    )
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Weekly_return = ROC(Close)
+  )
 
 RUT_Yearly <- RUT_Daily%>%
   group_by(Price_Year)%>%
   summarise(
-    Yearly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Yearly_return = ROC(Close)
   )
 
 RUT_Monthly <- RUT_Daily%>%
   group_by(Price_Month)%>%
   summarise(
-    Monthly_return = round((last(Adj) - first(Adj)) / first(Adj),4),
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj),
     Month = unique(format(PDate, "%B"))
+    )%>%
+  mutate(
+    Monthly_return = ROC(Close)
   )
 
 #### VIX
@@ -170,20 +244,38 @@ VIX_Daily$Return <- TTR::ROC(VIX_Daily$Close)
 VIX_Weekly <- VIX_Daily%>%
   group_by(Price_Week)%>%
   summarise(
-    Weekly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
-    )
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Weekly_return = ROC(Close)
+  )
 
 VIX_Yearly <- VIX_Daily%>%
   group_by(Price_Year)%>%
   summarise(
-    Yearly_return = round((last(Adj) - first(Adj)) / first(Adj),4)
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj)
+    )%>%
+  mutate(
+    Yearly_return = ROC(Close)
   )
 
 VIX_Monthly <- VIX_Daily%>%
   group_by(Price_Month)%>%
-  summarise(
-    Monthly_return = round((last(Adj) - first(Adj)) / first(Adj),4),
+   summarise(
+    Open = first(Open),
+    High = max(Adj),
+    Low = min(Adj),
+    Close = last(Adj),
     Month = unique(format(PDate, "%B"))
+    )%>%
+  mutate(
+    Monthly_return = ROC(Close)
   )
 
 ```
@@ -222,7 +314,9 @@ Weekly%>%
   )%>%
   flextable::flextable()%>%
   set_header_labels(values = c("Price_Week" = "Week", "Weekly_return" = "Weekly Return"))%>%
-  colformat_double(j=3, big.mark=",", suffix = "%", digits = 2,
+  colformat_double(j=7, big.mark=",", suffix = "%", digits = 2,
+  na_str = "N/A")%>%
+  colformat_double(j=c(3,4,5,6), big.mark=",", digits = 0,
   na_str = "N/A")%>%
   theme_zebra()
 
@@ -230,7 +324,7 @@ Weekly%>%
 
 ### S&P 500
 
-S&P 500 lost 0.5%, taking a pause from big gains from the week prior and consolidating
+S&P 500 lost \~0.3%, consolidating above the 200 day moving average. Bulls so far managed to hold support and the consolidation appears like a bull flag above 200 day moving average. Technically, S&P looks like it is ready to break out in the next week or two.
 
 ```{r SPX_Monthly}
 #| echo: false
@@ -240,7 +334,7 @@ S&P 500 lost 0.5%, taking a pause from big gains from the week prior and consoli
 #| output: true
 #| 
 SPX_Monthly$Month <- factor(SPX_Monthly$Month, levels = unique(SPX_Monthly$Month))
-SPX_Monthly$Year <- str_sub(SPX_Monthly$Price_Month, 3, 6)
+SPX_Monthly$Year <- str_sub(SPX_Monthly$Price_Month, 1, 4)
 #Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
 
 ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fill = Monthly_return))+
@@ -260,7 +354,7 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### NASDAQ
 
-Technology stocks lost little over 1% in the week for a month to data loss of 0.8%
+Technology stocks gained \~0.6% in the week for a month to date gain of 1.7%
 
 ```{r NDX_Monthly}
 #| echo: false
@@ -270,7 +364,7 @@ Technology stocks lost little over 1% in the week for a month to data loss of 0.
 #| output: true
 #| 
 NDX_Monthly$Month <- factor(NDX_Monthly$Month, levels = unique(NDX_Monthly$Month))
-NDX_Monthly$Year <- str_sub(NDX_Monthly$Price_Month, 3, 6)
+NDX_Monthly$Year <- str_sub(NDX_Monthly$Price_Month, 1, 4)
 #Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
 
 ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fill = Monthly_return))+
@@ -291,7 +385,7 @@ ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### DOW Jones
 
-Literally no change in DOW for the week. It lost 0.7% month to date
+DOW stayed pretty much flat with a 0.1% loss. It lost 0.8% month to date
 
 ```{r DJI_Monthly}
 #| echo: false
@@ -301,7 +395,7 @@ Literally no change in DOW for the week. It lost 0.7% month to date
 #| output: true
 #| 
 DJI_Monthly$Month <- factor(DJI_Monthly$Month, levels = unique(DJI_Monthly$Month))
-DJI_Monthly$Year <- str_sub(DJI_Monthly$Price_Month, 3, 6)
+DJI_Monthly$Year <- str_sub(DJI_Monthly$Price_Month, 1, 4)
 #Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
 
 ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fill = Monthly_return))+
@@ -322,7 +416,7 @@ ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### Russell
 
-Small cap stocks lost \~2% for the week
+Small cap stocks gained \~1.4% for the week
 
 ```{r RUT_Monthly}
 #| echo: false
@@ -332,7 +426,7 @@ Small cap stocks lost \~2% for the week
 #| output: true
 #| 
 RUT_Monthly$Month <- factor(RUT_Monthly$Month, levels = unique(RUT_Monthly$Month))
-RUT_Monthly$Year <- str_sub(RUT_Monthly$Price_Month, 3, 6)
+RUT_Monthly$Year <- str_sub(RUT_Monthly$Price_Month, 1, 4)
 #Monthly$Month <- str_sub(Monthly$Price_Month, 1, 2)
 
 ggplot(RUT_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fill = Monthly_return))+
@@ -454,6 +548,10 @@ ggplot(aes(x= Date))+
        title = "Yield curves")+
   theme_custom()+
   theme(legend.title = element_blank())
-
-
 ```
+
+### Disclaimer
+
+Anything on this blog is not an investment advice. It is essential that you fully understand the risks involved before making any investment decisions. You should consult with a financial professional to help you assess your risk tolerance and to determine an investment strategy that is suitable for your individual needs.
+
+Please note that this disclaimer is not exhaustive and is provided for informational purposes only. Investing involves risks, and it is your responsibility to carefully consider the risks before making any investment decisions.

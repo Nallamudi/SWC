@@ -324,7 +324,7 @@ Weekly%>%
 
 ### S&P 500
 
-S&P 500 lost ~0.3%, consolidating above the 200 day moving average. Bulls so far managed to hold support and the consolidation appears like a bull flag above 200 day moving average. Technically, S&P looks like it is ready to break out in the next week or two. 
+S&P 500 lost \~0.3%, consolidating above the 200 day moving average. Bulls so far managed to hold support and the consolidation appears like a bull flag above 200 day moving average. Technically, S&P looks like it is ready to break out in the next week or two.
 
 ```{r SPX_Monthly}
 #| echo: false
@@ -354,7 +354,7 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### NASDAQ
 
-Technology stocks gained ~0.6% in the week for a month to date gain of 1.7%
+Technology stocks gained \~0.6% in the week for a month to date gain of 1.7%
 
 ```{r NDX_Monthly}
 #| echo: false
@@ -550,7 +550,7 @@ ggplot(aes(x= Date))+
   theme(legend.title = element_blank())
 ```
 
-### Desclaimer
+### Disclaimer
 
 Anything on this blog is not an investment advice. It is essential that you fully understand the risks involved before making any investment decisions. You should consult with a financial professional to help you assess your risk tolerance and to determine an investment strategy that is suitable for your individual needs.
 
