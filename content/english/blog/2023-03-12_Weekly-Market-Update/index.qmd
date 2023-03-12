@@ -306,7 +306,11 @@ sp500_sectors%>%
 
 ### NASDAQ
 
+<<<<<<< HEAD
 Technology stocks lost \~2.8% in March. Like S&P, turned negative for the month wiping out last week's gains. 
+=======
+Technology stocks lost \~2.8% in February. Like S&P, turned negative for the month wiping out last week's gains. 
+>>>>>>> f3a9b007a03206e70c83150d96c833fe67e0c645
 
 ```{r NDX_Monthly}
 #| echo: false
