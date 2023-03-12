@@ -306,7 +306,7 @@ sp500_sectors%>%
 
 ### NASDAQ
 
-Technology stocks lost \~2.8% in February. Like S&P, turned negative for the month wiping out last week's gains. 
+Technology stocks lost \~2.8% in March. Like S&P, turned negative for the month wiping out last week's gains. 
 
 ```{r NDX_Monthly}
 #| echo: false
