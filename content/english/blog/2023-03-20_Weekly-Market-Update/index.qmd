@@ -227,7 +227,10 @@ Weekly%>%
   na_str = "N/A")%>%
   colformat_double(j=c(2,4,5,6,7), big.mark=",", digits = 0,
   na_str = "N/A")%>%
-  theme_zebra()
+  theme_zebra() %>%
+  line_spacing(space = 1, part = "all") %>%
+  set_table_properties(layout = "autofit") %>%
+  padding(padding = 0, part = "all")
 
 ```
 
@@ -271,7 +274,7 @@ Energy sector lost 6.8% while Financials continues to lose with a 5.9% loss for 
 #| message: false
 
 swc_db <- connect_to_swc_db()
-week <- get_week(Sys.Date()-1)
+week <- get_week(Sys.Date()-2)
 sp500_sectors_sql <- get_sql(paste0(here(), "/R/SNP500_Sectors.sql"))
 sp500_sectors_sql <- glue(sp500_sectors_sql)
 
@@ -294,11 +297,14 @@ sp500_sectors%>%
   flextable::flextable() %>%
   set_header_labels(values = c("ticker" = "Ticker", "sector" = "Sector", "price_week" = "Week", "weekly_return" = "Weekly Return", "close" = "Close", "high" = "High", 
                                "low" = "Low", "open" = "Open")) %>%
-  colformat_double(j=7, big.mark=",", suffix = "%", digits = 2,
+  colformat_double(j=c(7,8), big.mark=",", suffix = "%", digits = 2,
   na_str = "N/A")%>%
   colformat_double(j=c(3,4,5,6), big.mark=",", digits = 1,
   na_str = "N/A")%>%
-  theme_zebra()
+  theme_zebra() %>%
+  line_spacing(space = 0, part = "all") %>%
+  set_table_properties(layout = "autofit") %>%
+  padding(padding = 0, part = "all")
 
 
 ```
