@@ -3,7 +3,7 @@ title: "Weekly Market Update"
 author: "Sarath Nallamudi"
 format: hugo
 editor: source
-date: '`r format(Sys.Date(), "%Y-%m-%d")`'
+date: '2023-03-19'
 freeze: true
 categories: ["Markets"]
 tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
@@ -178,7 +178,7 @@ VIX_Yearly <- to_yearly(VIX_Daily)
 
 ```
 
-It's a brutal week in the equity markets. Major indices lost over 4.5% for the week while small caps lost over 8%. Sell-off triggered by central banks comments and intensified with the failure of Silicaon Valley bank. Major volatility made a come back to the markets with VIX gaining close to 30% for the week. 
+Major indices broke the losing streak this week to post impressive gains. Tech stocks led the market with a solid 4.3% gain for NASDAQ while S&P posted impressive 1.4% gain. DOW and small caps did not participate in the rally. Troubles in the banking sector did not deter the markets to post impressive gains. However, participation from small caps will confirm if the rally has any legs.
 
 ```{r }
 #| echo: false
@@ -227,13 +227,17 @@ Weekly%>%
   na_str = "N/A")%>%
   colformat_double(j=c(2,4,5,6,7), big.mark=",", digits = 0,
   na_str = "N/A")%>%
-  theme_zebra()
+  theme_zebra() 
+# %>%
+#   line_spacing(space = 0.8, part = "all") %>%
+#   set_table_properties(layout = "autofit") %>%
+#   padding(padding = 0.5, part = "all")
 
 ```
 
 ### S&P 500
 
-S&P 500 turned red for the month with a 2.8% loss. The index is back to the multi-month resistance line that through out the 2022 downtrend. It will be interesting to see if it acts as a support and bounce back from here. Fundamentally, interest rates continues to go up, deepening the yield curve inversion. The inversion is over 100 basis points now.  
+S&P 500 still red for the month with a 1.4% loss. The index bounced back from multi-month resistance line that is acting as support now. On macro side, 2-year treasury yield dropped significantly.
 
 ```{r SPX_Monthly}
 #| echo: false
@@ -261,7 +265,7 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 #### S&P 500 sector performance
 
-Financials is the biggest loser for the week with a 8.5% loss with Materials a close second at 7.6% loss. Losses at consumer staples and utilities were relative low. 
+Energy sector lost 6.8% while Financials continues to lose with a 5.9% loss for the week. Technology and communication services gained over 5%.
 
 ```{r }
 #| echo: false
@@ -271,7 +275,7 @@ Financials is the biggest loser for the week with a 8.5% loss with Materials a c
 #| message: false
 
 swc_db <- connect_to_swc_db()
-week <- get_week(Sys.Date()-1)
+week <- get_week(Sys.Date()-2)
 sp500_sectors_sql <- get_sql(paste0(here(), "/R/SNP500_Sectors.sql"))
 sp500_sectors_sql <- glue(sp500_sectors_sql)
 
@@ -294,18 +298,22 @@ sp500_sectors%>%
   flextable::flextable() %>%
   set_header_labels(values = c("ticker" = "Ticker", "sector" = "Sector", "price_week" = "Week", "weekly_return" = "Weekly Return", "close" = "Close", "high" = "High", 
                                "low" = "Low", "open" = "Open")) %>%
-  colformat_double(j=7, big.mark=",", suffix = "%", digits = 2,
+  colformat_double(j=c(7,8), big.mark=",", suffix = "%", digits = 2,
   na_str = "N/A")%>%
   colformat_double(j=c(3,4,5,6), big.mark=",", digits = 1,
   na_str = "N/A")%>%
-  theme_zebra()
+  theme_zebra() 
+# %>%
+#   line_spacing(space = 0, part = "all") %>%
+#   set_table_properties(layout = "autofit") %>%
+#   padding(padding = 0, part = "all")
 
 
 ```
 
 ### NASDAQ
 
-Technology stocks lost \~2.8% in February. Like S&P, turned negative for the month wiping out last week's gains. 
+Technology stocks turned green with \~1.5% gain in March.
 
 ```{r NDX_Monthly}
 #| echo: false
@@ -339,7 +347,7 @@ ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### DOW Jones
 
-DOW Jones lost \~2.3% in March so far. It started March with strong gains; 2.2% in the first three trading days but wiped out those gains and turned negative for the month with steep losses last week. 
+DOW Jones lost \~2.5% in March so far. It continues to underperform other indices this year.
 
 ```{r DJI_Monthly}
 #| echo: false
@@ -372,7 +380,7 @@ ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### Russell
 
-Small cap stocks lost \~6.8% for the month of March. 
+Small cap stocks lost \~9.5% for the month of March. It gave up all gains for the year.
 
 ```{r RUT_Monthly}
 #| echo: false
@@ -446,7 +454,7 @@ long_rates <- c("2Years","5Years","7Years","10Years","30Years")
 
 ### Interest rates
 
-As discussed in this blog last week, short term yields continued to inch up spelling trouble for stocks. Longer term rates appear to slow down a little but 2-year is still lot higher than 10-year and is sitting at 5% mark. 
+2-year yield crashed over 100 basis points for the week, finally in-line with other longer term maturities. The gap between 2-year and longer term maturities is narrower now. This may be the first sign that the steepness of the yield curve is receding, at least on the higher end of the yield curve.
 
 ```{r Interest_Rates}
 #| echo: false
@@ -489,9 +497,9 @@ ggplot(aes(x= Date))+
 
 ### Yeild Curve
 
-Yield curve continues to slope negatively (inverted). At the higher end, it appears that it is starting to flatten but at the lower end, it still slopes significantly negative. The steep negative slope between 2-year and 5-year is uncomfortably high. It is now over 100 basis points. 
+As of 3/16/2023, yield curve continues to slope negatively (inverted). Steep drop in 2-year yield helps to further flatten on the higher end but at the lower end, it still slopes significantly negative.
 
-Stock market cracked last week responding to signs from the bond market. Trouble at Silicon Valley bank appears to be specific to the company and other financial firms appear to have relatively robust risk management practices in place. Interesting times ahead for financial sector in the next few weeks to watch out.  
+The 10s2s has shown a highly positive trend this week, surpassing the 2s3mos mark for the first time since the start of 2022. This suggests that investors anticipation that the end of most rate hikes by the FED is near. The upcoming FOMC meeting on Wednesday 3/22 will provide clarity on the FED’s future policies. While the typical expectation is for a 25 to 50 basis points hike, given the recent opening of a new discount window for banks, FED might as well surprise us with a pause.
 
 ```{r Yield_Curve}
 #| echo: false
