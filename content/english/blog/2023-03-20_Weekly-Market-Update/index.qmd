@@ -227,10 +227,11 @@ Weekly%>%
   na_str = "N/A")%>%
   colformat_double(j=c(2,4,5,6,7), big.mark=",", digits = 0,
   na_str = "N/A")%>%
-  theme_zebra() %>%
-  line_spacing(space = 1, part = "all") %>%
-  set_table_properties(layout = "autofit") %>%
-  padding(padding = 0, part = "all")
+  theme_zebra() 
+# %>%
+#   line_spacing(space = 0.8, part = "all") %>%
+#   set_table_properties(layout = "autofit") %>%
+#   padding(padding = 0.5, part = "all")
 
 ```
 
@@ -301,10 +302,11 @@ sp500_sectors%>%
   na_str = "N/A")%>%
   colformat_double(j=c(3,4,5,6), big.mark=",", digits = 1,
   na_str = "N/A")%>%
-  theme_zebra() %>%
-  line_spacing(space = 0, part = "all") %>%
-  set_table_properties(layout = "autofit") %>%
-  padding(padding = 0, part = "all")
+  theme_zebra() 
+# %>%
+#   line_spacing(space = 0, part = "all") %>%
+#   set_table_properties(layout = "autofit") %>%
+#   padding(padding = 0, part = "all")
 
 
 ```
