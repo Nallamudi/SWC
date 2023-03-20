@@ -181,7 +181,7 @@ VIX_Yearly <- to_yearly(VIX_Daily)
 
 It's a brutal week in the equity markets. Major indices lost over 4.5% for the week while small caps lost over 8%. Sell-off triggered by central banks comments and intensified with the failure of Silicaon Valley bank. Major volatility made a come back to the markets with VIX gaining close to 30% for the week. 
 
-```{r Weekly Return}
+```{r }
 #| echo: false
 #| warning: false
 #| message: false
@@ -264,7 +264,7 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 Financials is the biggest loser for the week with a 8.5% loss with Materials a close second at 7.6% loss. Losses at consumer staples and utilities were relative low. 
 
-```{r SNP500_Sectors}
+```{r }
 #| echo: false
 #| warning: false
 #| error: false
@@ -290,7 +290,7 @@ sp500_sectors%>%
   mutate(
     weekly_return = return *100
   ) %>%
-  select(ticker, sector, open, high, low, close, weekly_return) %>%
+  select(ticker, sector, price_week, open, high, low, close, weekly_return) %>%
   arrange(ticker) %>%
   flextable::flextable() %>%
   set_header_labels(values = c("ticker" = "Ticker", "sector" = "Sector", "price_week" = "Week", "weekly_return" = "Weekly Return", "close" = "Close", "high" = "High", 
