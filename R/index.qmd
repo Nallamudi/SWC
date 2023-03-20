@@ -7,7 +7,6 @@ date: '`r format(Sys.Date(), "%Y-%m-%d")`'
 freeze: true
 categories: ["Markets"]
 tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
-toc: true
 execute: 
   echo: false
   warning: false

@@ -3,11 +3,10 @@ title: "Weekly Market Update"
 author: "Sarath Nallamudi"
 format: hugo
 editor: source
-date: '`r format(Sys.Date(), "%Y-%m-%d")`'
+date: '2023-03-12'
 freeze: true
 categories: ["Markets"]
 tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
-toc: true
 execute: 
   echo: false
   warning: false
