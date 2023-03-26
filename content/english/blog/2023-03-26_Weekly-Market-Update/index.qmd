@@ -3,7 +3,7 @@ title: "Weekly Market Update"
 author: "Sarath Nallamudi"
 format: hugo
 editor: source
-date: '2023-03-19'
+date: '2023-03-26'
 freeze: true
 categories: ["Markets"]
 tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
@@ -33,16 +33,20 @@ library(fredr)
 
 library(TTR)
 library(quantmod)
-library(PerformanceAnalytics)
-library(PortfolioAnalytics)
+# library(PerformanceAnalytics)
+# library(PortfolioAnalytics)
 library(gt)
 library(gganimate)
-library(DT)
-library(bslib)
+# library(DT)
+# library(bslib)
 library(flextable)
 
 options(scipen = 99999)
 get_quantmod_fred_data()
+set_flextable_defaults(
+  table.layout = "fixed"
+)
+
 
 ```
 
@@ -178,7 +182,7 @@ VIX_Yearly <- to_yearly(VIX_Daily)
 
 ```
 
-Major indices broke the losing streak this week to post impressive gains. Tech stocks led the market with a solid 4.3% gain for NASDAQ while S&P posted impressive 1.4% gain. DOW and small caps did not participate in the rally. Troubles in the banking sector did not deter the markets to post impressive gains. However, participation from small caps will confirm if the rally has any legs.
+Rally continued in the equity markets last week. Stocks sold off on the 25 basis point rate increase but bounced back to end the week in green. Dow finally participated in the rally but small caps lagged the overall market. 
 
 ```{r }
 #| echo: false
@@ -221,31 +225,30 @@ Weekly%>%
   mutate(
     Weekly_return = Weekly_return *100
   ) %>%
+  select(Index, Close, Open, High, Low, Close.1, Weekly_return) %>%
   flextable::flextable ()%>%
-  set_header_labels(values = c("price_week" = "Week", 
+  set_header_labels(values = c(
+    #"price_week" = "Week", 
                                "Weekly_return" = "Weekly Return", 
                                "Close" = "Pre. Close", 
                                "Close.1"="Close"))%>%
-  colformat_double(j=8, 
+  colformat_double(j=7, 
                    big.mark=",", 
                    suffix = "%", 
                    digits = 2,
                    na_str = "N/A")%>%
-  colformat_double(j=c(2,4,5,6,7), 
+  colformat_double(j=c(2,4,5,6), 
                    big.mark=",", 
                    digits = 0,
-                   na_str = "N/A")%>%
-  theme_zebra() 
-# %>%
-#   line_spacing(space = 0.8, part = "all") %>%
-#   set_table_properties(layout = "autofit") %>%
-#   padding(padding = 0.5, part = "all")
+                   na_str = "N/A") %>%
+  theme_zebra() %>%
+  width(j= 1, width = 1.25)
 
 ```
 
 ### S&P 500
 
-S&P 500 still red for the month with a 1.4% loss. The index bounced back from multi-month resistance line that is acting as support now. On macro side, 2-year treasury yield dropped significantly.
+S&P 500 is pretty much flat for the month. The index sold-off to the multi-month resistance line that is acting as support now and promptly bounced back from it. S&P literally played ping-pong in the month of March
 
 ```{r SPX_Monthly}
 #| echo: false
@@ -273,7 +276,7 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 #### S&P 500 sector performance
 
-Energy sector lost 6.8% while Financials continues to lose with a 5.9% loss for the week. Technology and communication services gained over 5%.
+Sell off in the financials finally slowed and the sector remained flat for the week. Real estate and Utilities lost out for the week while Communication services and Technology gained.  
 
 ```{r }
 #| echo: false
@@ -281,6 +284,7 @@ Energy sector lost 6.8% while Financials continues to lose with a 5.9% loss for 
 #| error: false
 #| tbl-cap: SP500 Sector performance
 #| message: false
+
 
 swc_db <- connect_to_swc_db()
 week <- get_week(Sys.Date()-2)
@@ -301,18 +305,18 @@ sp500_sectors%>%
   mutate(
     weekly_return = return *100
   ) %>%
-  select(ticker, sector, price_week, open, high, low, close, weekly_return) %>%
+  select(ticker, sector, open, high, low, close, weekly_return) %>%
   arrange(ticker) %>%
   flextable::flextable() %>%
   set_header_labels(values = c("ticker" = "Ticker", 
                                "sector" = "Sector", 
-                               "price_week" = "Week", 
+                            #   "price_week" = "Week", 
                                "weekly_return" = "Weekly Return", 
                                "close" = "Close", 
                                "high" = "High", 
                                "low" = "Low", 
                                "open" = "Open")) %>%
-  colformat_double(j=c(7,8), 
+  colformat_double(j=c(7), 
                    big.mark=",", 
                    suffix = "%",
                    digits = 2,
@@ -332,7 +336,7 @@ sp500_sectors%>%
 
 ### NASDAQ
 
-Technology stocks turned green with \~1.5% gain in March.
+Technology stocks continued to gain and posted \~3.2% gain in March. Tech is slowly starting to outperform the broader market.
 
 ```{r NDX_Monthly}
 #| echo: false
@@ -366,7 +370,7 @@ ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### DOW Jones
 
-DOW Jones lost \~2.5% in March so far. It continues to under perform other indices this year.
+DOW Jones lost \~1.3% in March so far. 
 
 ```{r DJI_Monthly}
 #| echo: false
@@ -399,7 +403,7 @@ ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### Russell
 
-Small cap stocks lost \~9.5% for the month of March. It gave up all gains for the year.
+Small cap pared some of it's losses in the week for a total loss \~8.9% for the month of March. It is still in the red for the year. 
 
 ```{r RUT_Monthly}
 #| echo: false
@@ -473,7 +477,7 @@ long_rates <- c("2Years","5Years","7Years","10Years","30Years")
 
 ### Interest rates
 
-2-year yield crashed over 100 basis points for the week, finally in-line with other longer term maturities. The gap between 2-year and longer term maturities is narrower now. This may be the first sign that the steepness of the yield curve is receding, at least on the higher end of the yield curve.
+2-year continues to drop relative to other maturities. 
 
 ```{r Interest_Rates}
 #| echo: false
@@ -516,9 +520,9 @@ ggplot(aes(x= Date))+
 
 ### Yeild Curve
 
-As of 3/16/2023, yield curve continues to slope negatively (inverted). Steep drop in 2-year yield helps to further flatten on the higher end but at the lower end, it still slopes significantly negative.
+Yield curve continues to slope negatively (inverted). While 5-year to 10-year stayed flat, 10-30 years turned positive after a long time. It turned positive on the lower end as well betweek 3-6months. 
 
-The 10s2s has shown a highly positive trend this week, surpassing the 2s3mos mark for the first time since the start of 2022. This suggests that investors anticipation that the end of most rate hikes by the FED is near. The upcoming FOMC meeting on Wednesday 3/22 will provide clarity on the FED’s future policies. While the typical expectation is for a 25 to 50 basis points hike, given the recent opening of a new discount window for banks, FED might as well surprise us with a pause.
+The 10s2s continues to positive trend over 2s3mos mark. Fed followed through with the 25 basis points increase. Markets are now expecting Fed to pause sometime and start cutting by the end of this year, which should be good news for equities. 
 
 ```{r Yield_Curve}
 #| echo: false

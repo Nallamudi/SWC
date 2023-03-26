@@ -1,0 +1,115 @@
+---
+title: "Weekly Market Update"
+author: "Sarath Nallamudi"
+format: hugo
+editor: source
+date: '2023-03-26'
+freeze: true
+categories: ["Markets"]
+tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
+execute: 
+  echo: false
+  warning: false
+  message: false
+  error: false
+---
+
+
+## Equity markets
+
+
+
+
+
+
+
+Rally continued in the equity markets last week. Stocks sold off on the 25 basis point rate increase but bounced back to end the week in green. Dow finally participated in the rally but small caps lagged the overall market. 
+
+
+
+```{=html}
+<div class="tabwid"><style>.cl-c750b08e{}.cl-c741dbae{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c741dbb8{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c74891e2{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c74891ec{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c748af9c{width:1.25in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c748af9d{width:0.75in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c748afa6{width:1.25in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c748afa7{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c748afb0{width:1.25in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c748afb1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-c750b08e'><thead><tr style="overflow-wrap:break-word;"><th class="cl-c748af9c"><p class="cl-c74891e2"><span class="cl-c741dbae">Index</span></p></th><th class="cl-c748af9d"><p class="cl-c74891ec"><span class="cl-c741dbae">Pre. Close</span></p></th><th class="cl-c748af9d"><p class="cl-c74891ec"><span class="cl-c741dbae">Open</span></p></th><th class="cl-c748af9d"><p class="cl-c74891ec"><span class="cl-c741dbae">High</span></p></th><th class="cl-c748af9d"><p class="cl-c74891ec"><span class="cl-c741dbae">Low</span></p></th><th class="cl-c748af9d"><p class="cl-c74891ec"><span class="cl-c741dbae">Close</span></p></th><th class="cl-c748af9d"><p class="cl-c74891ec"><span class="cl-c741dbae">Weekly Return</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c748afa6"><p class="cl-c74891e2"><span class="cl-c741dbb8">S&amp;P 500</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">3,917</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">3,917.47</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">4,039</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">3,909</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">3,971</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">1.38%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c748afb0"><p class="cl-c74891e2"><span class="cl-c741dbb8">Nasdaq</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">11,631</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">11,614.39</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">12,014</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">11,551</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">11,824</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">1.65%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c748afa6"><p class="cl-c74891e2"><span class="cl-c741dbb8">Dow Jones</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">31,862</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">31,872.33</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">32,762</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">31,805</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">32,238</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">1.17%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c748afb0"><p class="cl-c74891e2"><span class="cl-c741dbb8">Russell</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">1,726</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">1,733.51</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">1,788</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">1,695</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">1,735</span></p></td><td class="cl-c748afb1"><p class="cl-c74891ec"><span class="cl-c741dbb8">0.52%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c748afa6"><p class="cl-c74891e2"><span class="cl-c741dbb8">VIX</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">26</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">27.77</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">29</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">20</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">22</span></p></td><td class="cl-c748afa7"><p class="cl-c74891ec"><span class="cl-c741dbb8">-15.99%</span></p></td></tr></tbody></table></div>
+```
+
+
+### S&P 500
+
+S&P 500 is pretty much flat for the month. The index sold-off to the multi-month resistance line that is acting as support now and promptly bounced back from it. S&P literally played ping-pong in the month of March
+
+
+<img src="index_files/figure-html/SPX_Monthly-1.png" width="672" />
+
+
+#### S&P 500 sector performance
+
+Sell off in the financials finally slowed and the sector remained flat for the week. Real estate and Utilities lost out for the week while Communication services and Technology gained.  
+
+
+
+```{=html}
+<div class="tabwid"><style>.cl-c8869716{}.cl-c87917da{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c87917e4{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c87e151e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c87e1528{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c87e37ce{width:0.75in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c87e37d8{width:0.75in;background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c87e37e2{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c87e37e3{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c87e37e4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c87e37ec{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-c8869716'><thead><tr style="overflow-wrap:break-word;"><th class="cl-c87e37ce"><p class="cl-c87e151e"><span class="cl-c87917da">Ticker</span></p></th><th class="cl-c87e37ce"><p class="cl-c87e151e"><span class="cl-c87917da">Sector</span></p></th><th class="cl-c87e37d8"><p class="cl-c87e1528"><span class="cl-c87917da">Open</span></p></th><th class="cl-c87e37d8"><p class="cl-c87e1528"><span class="cl-c87917da">High</span></p></th><th class="cl-c87e37d8"><p class="cl-c87e1528"><span class="cl-c87917da">Low</span></p></th><th class="cl-c87e37d8"><p class="cl-c87e1528"><span class="cl-c87917da">Close</span></p></th><th class="cl-c87e37d8"><p class="cl-c87e1528"><span class="cl-c87917da">Weekly Return</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">XLB</span></p></td><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">Materials</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">77.6</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">78.1</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">75.1</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">76.8</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">1.72%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">XLC</span></p></td><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">Comm. Services</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">55.9</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">57.1</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">55.4</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">56.6</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">2.98%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">XLE</span></p></td><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">Energy</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">79.3</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">80.8</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">75.8</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">77.9</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">1.20%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">XLF</span></p></td><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">Finance</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">31.9</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">32.0</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">30.4</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">31.0</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">0.03%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">XLI</span></p></td><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">Industrial</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">98.7</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">99.1</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">95.2</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">96.9</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">0.25%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">XLK</span></p></td><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">Technology</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">144.3</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">147.6</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">142.8</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">146.0</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">1.74%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">XLP</span></p></td><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">Consumer Staples</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">72.9</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">73.1</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">71.9</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">73.0</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">1.19%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">XLRE</span></p></td><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">Real Estate</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">36.6</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">36.6</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">34.3</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">35.5</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">-1.99%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">XLU</span></p></td><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">Utility</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">67.1</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">67.2</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">63.7</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">65.7</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">-1.91%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">XLV</span></p></td><td class="cl-c87e37e4"><p class="cl-c87e151e"><span class="cl-c87917e4">Health Care</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">127.5</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">128.3</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">125.0</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">127.3</span></p></td><td class="cl-c87e37ec"><p class="cl-c87e1528"><span class="cl-c87917e4">1.14%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">XLY</span></p></td><td class="cl-c87e37e2"><p class="cl-c87e151e"><span class="cl-c87917e4">Consumer Discretionary</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">143.3</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">146.6</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">139.8</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">141.6</span></p></td><td class="cl-c87e37e3"><p class="cl-c87e1528"><span class="cl-c87917e4">0.17%</span></p></td></tr></tbody></table></div>
+```
+
+
+### NASDAQ
+
+Technology stocks continued to gain and posted \~3.2% gain in March. Tech is slowly starting to outperform the broader market.
+
+
+<img src="index_files/figure-html/NDX_Monthly-1.png" width="672" />
+
+
+### DOW Jones
+
+DOW Jones lost \~1.3% in March so far. 
+
+
+<img src="index_files/figure-html/DJI_Monthly-1.png" width="672" />
+
+
+### Russell
+
+Small cap pared some of it's losses in the week for a total loss \~8.9% for the month of March. It is still in the red for the year. 
+
+
+<img src="index_files/figure-html/RUT_Monthly-1.png" width="672" />
+
+
+## Bond markets
+
+
+
+```
+## [1] "DGS3MO" "DGS6MO" "DFF"    "DGS1"   "DGS2"   "DGS5"   "DGS7"   "DGS10" 
+## [9] "DGS30"
+```
+
+
+
+
+### Interest rates
+
+2-year continues to drop relative to other maturities. 
+
+
+<img src="index_files/figure-html/Interest_Rates-1.png" width="672" /><img src="index_files/figure-html/Interest_Rates-2.png" width="672" />
+
+
+### Yeild Curve
+
+Yield curve continues to slope negatively (inverted). While 5-year to 10-year stayed flat, 10-30 years turned positive after a long time. It turned positive on the lower end as well betweek 3-6months. 
+
+The 10s2s continues to positive trend over 2s3mos mark. Fed followed through with the 25 basis points increase. Markets are now expecting Fed to pause sometime and start cutting by the end of this year, which should be good news for equities. 
+
+
+<img src="index_files/figure-html/Yield_Curve-1.png" width="672" />
+
+<img src="index_files/figure-html/Yield_Curve_inv-1.png" width="672" />
+
+
+### Disclaimer
+
+Anything on this blog is not an investment advice. It is essential that you fully understand the risks involved before making any investment decisions. You should consult with a financial professional to help you assess your risk tolerance and to determine an investment strategy that is suitable for your individual needs.
+
+Please note that this disclaimer is not exhaustive and is provided for informational purposes only. Investing involves risks, and it is your responsibility to carefully consider the risks before making any investment decisions.
+
