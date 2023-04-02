@@ -23,18 +23,18 @@ execute:
 #| error: false
 
 library(tidyverse)
+library(DBI)
+library(odbc)
+library(RPostgres)
+library(dbplyr)
 library(lubridate)
 library(Technical)
-library(IBrokers)
-library(RPostgres)
 library(glue)
 library(here)
 library(fredr)
 
 library(TTR)
 library(quantmod)
-library(PerformanceAnalytics)
-library(PortfolioAnalytics)
 library(gt)
 library(gganimate)
 library(DT)
@@ -43,6 +43,8 @@ library(flextable)
 
 options(scipen = 99999)
 get_quantmod_fred_data()
+
+swc <- connect_to_swc_db()
 
 ```
 
@@ -53,6 +55,26 @@ get_quantmod_fred_data()
 #| error: false
 #| output: true
 
+data_date <- "2023-01-01"
+
+ daily_metrics <- swc %>% 
+  tbl(in_schema("price","daily_metrics")) %>% 
+  filter(ticker == "RUT") %>%
+  filter(date > data_date) %>%
+  collect()
+
+all_equity_tickers <- swc %>% 
+  tbl(in_schema("setup","tickers")) %>% 
+  filter(ib_type %in% c("STK","IDX")) %>%
+  collect()
+ 
+ib_failed_tickers <- swc %>% 
+  tbl(in_schema("price","processed_tickers_hist")) %>% 
+    left_join("tickers", by=c("ticker" = "ticker")) %>%
+    filter(status == "Failed") %>%
+  collect()
+  
+  
 #### SP500
 SPX_Daily <- getSymbols.yahoo("^GSPC", from='2000-01-01', periodicity = 'daily', auto.assign=FALSE)
 SPX_Daily <- data.frame(Date = index(SPX_Daily), coredata(SPX_Daily))
