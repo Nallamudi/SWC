@@ -3,7 +3,7 @@ title: "Weekly Market Update"
 author: "Sarath Nallamudi"
 format: hugo
 editor: source
-date: '2023-03-19'
+date: '2023-04-09'
 freeze: true
 categories: ["Markets"]
 tags: ["SPY", "DOW", "NASDAQ","SPX", "VIX"]
@@ -178,7 +178,7 @@ VIX_Yearly <- to_yearly(VIX_Daily)
 
 ```
 
-Major indices broke the losing streak this week to post impressive gains. Tech stocks led the market with a solid 4.3% gain for NASDAQ while S&P posted impressive 1.4% gain. DOW and small caps did not participate in the rally. Troubles in the banking sector did not deter the markets to post impressive gains. However, participation from small caps will confirm if the rally has any legs.
+Markets took a breather this week after the impressive gains the week prior. S&P stayed pretty flat with a loss of 0.1% while Nasdaq lost 1.1% and Russell lost 2.7%. Blue chips managed a 0.6% gain. 
 
 ```{r }
 #| echo: false
@@ -245,7 +245,7 @@ Weekly%>%
 
 ### S&P 500
 
-S&P 500 still red for the month with a 1.4% loss. The index bounced back from multi-month resistance line that is acting as support now. On macro side, 2-year treasury yield dropped significantly.
+S&P started April with a flat week. April over the last 4 years was pretty interesting with big gains/losses. It will be interesting to see how April 2023 turns out to be in the next few weeks. 
 
 ```{r SPX_Monthly}
 #| echo: false
@@ -273,7 +273,7 @@ ggplot(SPX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 #### S&P 500 sector performance
 
-Energy sector lost 6.8% while Financials continues to lose with a 5.9% loss for the week. Technology and communication services gained over 5%.
+Investors turned to safety with nice gains for Utilities and health card. Consumer discretionary lost over 3% while financials lost 0.5%, putting a pause for big losses for the sector. 
 
 ```{r }
 #| echo: false
@@ -332,7 +332,7 @@ sp500_sectors%>%
 
 ### NASDAQ
 
-Technology stocks turned green with \~1.5% gain in March.
+Nasdaq's 1.1% loss this month so far pales in comparison to what it did in April in the last 4 years. Like S&P, it's losses/gains in April are historically high.
 
 ```{r NDX_Monthly}
 #| echo: false
@@ -366,7 +366,7 @@ ggplot(NDX_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### DOW Jones
 
-DOW Jones lost \~2.5% in March so far. It continues to under perform other indices this year.
+Contrary to the trend, DOW gained 0.6% in April so far. 
 
 ```{r DJI_Monthly}
 #| echo: false
@@ -399,7 +399,7 @@ ggplot(DJI_Monthly%>%filter(Year >= year(Sys.Date())-5), aes(x=Year, y=Month, fi
 
 ### Russell
 
-Small cap stocks lost \~9.5% for the month of March. It gave up all gains for the year.
+Small caps did not participate in the rally so far, losing 2.7% in April so far, posing doubts about the strength of this rally in S&P and Tech. 
 
 ```{r RUT_Monthly}
 #| echo: false
@@ -473,7 +473,7 @@ long_rates <- c("2Years","5Years","7Years","10Years","30Years")
 
 ### Interest rates
 
-2-year yield crashed over 100 basis points for the week, finally in-line with other longer term maturities. The gap between 2-year and longer term maturities is narrower now. This may be the first sign that the steepness of the yield curve is receding, at least on the higher end of the yield curve.
+Treasury yields continue to trend lower across the yield curve. 
 
 ```{r Interest_Rates}
 #| echo: false
@@ -516,9 +516,7 @@ ggplot(aes(x= Date))+
 
 ### Yield Curve
 
-As of 3/16/2023, yield curve continues to slope negatively (inverted). Steep drop in 2-year yield helps to further flatten on the higher end but at the lower end, it still slopes significantly negative.
-
-The 10s2s has shown a highly positive trend this week, surpassing the 2s3mos mark for the first time since the start of 2022. This suggests that investors anticipation that the end of most rate hikes by the FED is near. The upcoming FOMC meeting on Wednesday 3/22 will provide clarity on the FED’s future policies. While the typical expectation is for a 25 to 50 basis points hike, given the recent opening of a new discount window for banks, FED might as well surprise us with a pause.
+Yield curve continues to flatten on the higher end. On the lower end, it is still very steep sloping negatively. Appears to be a long way ahead for it to at least flatten. 
 
 ```{r Yield_Curve}
 #| echo: false
