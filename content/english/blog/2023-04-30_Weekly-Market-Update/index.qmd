@@ -549,23 +549,25 @@ theme_custom()+
 #| output: true
 
 Treasuries%>%
-  filter(year(Date)>= 2022)%>%
+  filter(year(Date)>= 2020)%>%
   mutate(
     `2s3mos` = `2Years` - `3Mos`,
     `10s2s` = `10Years` - `2Years`,
-    `10s3mos` = `10Years` - `3Mos`
+    `10s3mos` = `10Years` - `3Mos`,
+    `30s2s` = `30Years` - `2Years`
   )%>%
-  select(Date, `2s3mos`, `10s2s`, `10s3mos`)%>%
-  pivot_longer(cols=c(`2s3mos`, `10s2s`, `10s3mos`))%>%
+  select(Date, `2s3mos`, `10s2s`, `10s3mos`, `30s2s`)%>%
+  pivot_longer(cols=c(`2s3mos`, `10s2s`, `10s3mos`, `30s2s`))%>%
   filter(!is.na(value))%>%
 ggplot(aes(x= Date))+
- geom_line(aes(y=value, group=name, color=factor(name, levels=c("2s3mos", "10s2s", "10s3mos"))), size=1)+
+ geom_line(aes(y=value, group=name, color=factor(name, levels=c("2s3mos", "10s2s", "10s3mos", "30s2s"))), size=1)+
   labs(x= "Date",
        y="Percentage",
        title = "Yield curves")+
   theme_custom()+
   theme(title = element_text(colour = "darkred"))+
-  theme(legend.title = element_blank())
+  theme(legend.title = element_blank(),
+        legend.position = "bottom")
 ```
 
 ### Disclaimer
