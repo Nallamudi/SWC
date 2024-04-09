@@ -23,7 +23,7 @@ cta:
   button:
     enable: true
     label: Download our brochure
-    link: images/SWC_Brochure_2022.pdf
+    link: images/SWC_Brochure_2024.pdf
   content: Read more about what we do and our philosophy. 
   enable: true
   title: We rely on data driven investment strategies

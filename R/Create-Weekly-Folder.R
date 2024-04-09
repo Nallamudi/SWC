@@ -14,3 +14,7 @@ file.copy(paste0(here::here(),"/R/Weekly_Yahoo/index.qmd"), paste0(Weekly_Folder
 file.copy(paste0(Weekly_Folder, "index.qmd"), paste0(here::here(),"/R/Weekly_Yahoo/index.qmd"), overwrite = TRUE)
 
 
+library(qpdf)
+
+pdf_combine(input = c("D:/Personal/Trust/Declaration_of_Trust.pdf", "D:/Personal/Trust/Certification_of_Trust.pdf"), 
+            output = "D:/Personal/Trust/Sarath_Laxmi_Nallamudi_Trust.pdf")
